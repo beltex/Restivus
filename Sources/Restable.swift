@@ -329,6 +329,18 @@ extension Restable {
 /// To get the full fledged story google `Swift Static Linking and Protocols with Associated Types`,
 /// crack a bottle of whisky, and watch Game of Thrones.
 public class AnyRestable<ExpectedResponseType: Decodable>: Restable {
+    public var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .millisecondsSince1970
+
+    public var dateEncodingStrategy: JSONEncoder.DateEncodingStrategy = .millisecondsSince1970
+
+    public var url: URL? = nil
+
+    public var cachePolicy: URLRequest.CachePolicy = .reloadIgnoringLocalAndRemoteCacheData
+
+    public var timeoutInterval: TimeInterval = 0.2
+
+    public var resultFormat: ResultFormat = .json
+
     /// The expected Decodable that the wrapped request will handle.
     /// This should match the wrapped Restable's `ResponseType`.
     public typealias ResponseType = ExpectedResponseType
